@@ -77,10 +77,22 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 {
     switch (message)
     {
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        RECT rect = {20, 20, 60, 80};
+        HBRUSH brush = (HBRUSH) GetStockBrush(BLACK_BRUSH);
+
+        FillRect(hdc, &rect, brush);
+
+        EndPaint(hWnd, &ps);
+    } break;
     case WM_DESTROY:
+    {
         PostQuitMessage(0);
         return 0;
-        break;
+    } break;
     default:
         break;
     }
