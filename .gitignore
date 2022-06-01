@@ -1,3 +1,7 @@
 build
 .vscode
 *.exe
+*.o
+*.obj
+*.pso
+*.vso
